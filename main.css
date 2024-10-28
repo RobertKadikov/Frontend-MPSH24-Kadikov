@@ -1,0 +1,22 @@
+.block {
+    display: block;
+    background-color: yellow;
+    padding: 15px;
+    max-width: 200px;
+
+  }
+
+  .block1 {
+    display:block;
+    background-color: grey;
+    border-radius: 20px;
+    margin: 0 auto;
+  }
+
+  .block2 {
+    display:block;
+    background-color: blue;
+    border-radius: 20px;
+    margin: 0 auto;
+    padding-bottom: 100%;
+  }
