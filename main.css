@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .block {
     display: block;
     background-color: yellow;
@@ -20,3 +21,43 @@
     margin: 0 auto;
     padding-bottom: 100%;
   }
+=======
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap');
+body {
+	font-family: 'Roboto', sans-serif;
+    padding-top: 60px;
+    padding-right: 60px;
+    padding-bottom: 60px;
+    padding-left: 60px;
+}
+
+p {
+    font-size:64px;
+    color:orange;
+    text-decoration: underline solid blue;
+    text-align: center;
+}
+
+ul {
+    font-size: 32px;
+    box-sizing: border-box;
+    height: 170px;
+}
+
+ol {
+    font-size: 32px;
+    border: 1rem solid;
+    width: 500px;
+}
+
+label {
+    color: white;
+    font-size: 16px;
+    border: 4mm ridge rgba(211, 220, 50, .6);
+    text-align: justify;
+}
+
+img {
+    text-align: center;
+}
+>>>>>>> 3b74422e96a379bca89c723e0810954f16487224
