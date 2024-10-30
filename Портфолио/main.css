@@ -1,16 +1,14 @@
-* {
-	padding: 0px;
-	margin: 0px;
-	border: 0px;
-}
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Montserrat', sent-serif;
     background-color: rgb(194, 194, 212);
 }
 
 .header {
-    background-color: rgb(13, 5, 59);
+    background-color: #07203f;
     padding: 50px;
     width: fit-content;
     display: block;
@@ -25,90 +23,19 @@ body {
 }
 
 .nickname {
-    color: azure;
+    color: #ffffff;
     font-weight: bolder;
-    font-size: large;
+    font-size: 36px;
 }
 
 .nav {
     display:flex;
-    gap: 55px;
+    gap: 40px;
 }
 
 .nav a {
-    color:azure;
-    font-size: medium;
+    font-family: "Inter", sent-serif;
+    color:#ffffff;
+    font-size: 36px;
 }
 
-*,
-*:before,
-*:after {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-aside,
-nav,
-footer,
-header,
-section {
-	display: block;
-}
-
-body {
-	line-height: 1;
-	-ms-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-webkit-text-size-adjust: 100%;
-}
-
-main {
-	flex: 1 1 auto;
-}
-
-body,
-html {
-	height: 100%;
-}
-
-input::-ms-clear {
-	display: none;
-}
-
-button {
-	background-color: transparent;
-	cursor: pointer;
-}
-
-button::-moz-focus-inner {
-	padding: 0;
-	border: 0;
-}
-
-a,
-a:visited {
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: none;
-}
-
-ul li {
-	list-style: none;
-}
-
-img {
-	vertical-align: top;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: inherit;
-	font-size: inherit;
-}
