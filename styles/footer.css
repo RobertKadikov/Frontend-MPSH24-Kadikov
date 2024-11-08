@@ -1,0 +1,28 @@
+.footer {
+    background-color: #07203f;
+    padding: 50px 0;
+    border-top:  1px solid grey;
+}
+
+.footer__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer__nickname {
+    color: #ffffff;
+    font-weight: bolder;
+    font-size: 36px;
+}
+
+.footer__nav {
+    display:flex;
+    gap: 40px;
+}
+
+.footer__nav a {
+    font-family: "Inter", sent-serif;
+    color:#ffffff;
+    font-size: 36px;
+}
