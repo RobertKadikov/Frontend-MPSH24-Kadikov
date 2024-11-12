@@ -1,35 +1,40 @@
-var a = 6;
-var b = 8;
-var c = a + b;
+const blocksWrapper = document.querySelector('.job__class');
+const addProjectBtn = document.querySelector('.job__button');
+const tmpAddProjectBtn = document.querySelector('#tmp');
+const addProjectModal = document.querySelector('.modal');
 
-console.log("total :", c);
+addProjectBtn.addEventListener('click', addProject);
+tmpAddProjectBtn.addEventListener('click', tmpAddProject);
 
-console.log("maximum :", Math.max(a, b, c)); 
-
-const e = "Leo Di Caprio";
-const f = "God bless Russia";
-
-function max_length(str1, str2) {
-    if (str1.length >= str2.length){
-        console.log(str1)
-    } else {
-        console.log(str2)
-    }
+function addProject( ) {
+  addProjectModal.classList.add('open');
 }
 
-max_length(e, f)
 
-const pal = 'pazak';
+// function addProject( ) {
+//   addProjectModal.classList.add('remove');
+// }
 
-function palindrom(t) {
-if (t.toString().split("").reverse().join("") == t.toString()) {
-  console.log("Это палиндром")
-} else {
-  console.log("Это не палиндром")
+function tmpAddProject( ) {
+  const newElement = document.createElement('div');
+  newElement.classList.add('job__block');
+  const title = 'title text';
+  const desc = 'description text';
+  newElement.innerHTML = `
+      <div class="job__img">
+          <img src="job 3.jpg" alt="" class="job__naked">
+      </div>
+      <div class="job__name">
+      <h2 class="job__word">
+          ${title}
+      </h2>
+      <p class="job__description">
+          ${desc}
+      </p>
+      </div>
+  `
+
+  blocksWrapper.appendChild(newElement);
 }
-}
-
-palindrom(pal)
-
   
 
