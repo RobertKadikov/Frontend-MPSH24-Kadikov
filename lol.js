@@ -1,35 +1,43 @@
 const blocksWrapper = document.querySelector('.job__class');
 const addProjectBtn = document.querySelector('.job__button');
-const tmpAddProjectBtn = document.querySelector('#tmp');
 const addProjectModal = document.querySelector('.modal');
+const closeProjectBtn = document.querySelector('.modal__close');
+const nameProject = document.getElementById('name');
+const descriptionProject = document.getElementById('description');
+const linkProject = document.getElementById('link');
+const newProjectBtn = document.getElementById('newProject');
+
+
+
 
 addProjectBtn.addEventListener('click', addProject);
-tmpAddProjectBtn.addEventListener('click', tmpAddProject);
+closeProjectBtn.addEventListener('click', close);
+newProjectBtn.addEventListener('click', addnewProject);
+
+
+
 
 function addProject( ) {
   addProjectModal.classList.add('open');
 }
 
 
-// function addProject( ) {
-//   addProjectModal.classList.add('remove');
-// }
-
-function tmpAddProject( ) {
+function addnewProject( ) {
   const newElement = document.createElement('div');
   newElement.classList.add('job__block');
-  const title = 'title text';
-  const desc = 'description text';
+  const nameProject = document.getElementById('name').value;
+  const descriptionProject = document.getElementById('description').value;
+  const linkProject = document.getElementById('link').value;
   newElement.innerHTML = `
       <div class="job__img">
-          <img src="job 3.jpg" alt="" class="job__naked">
+          <img src="${linkProject}" alt="" class="job__naked">
       </div>
       <div class="job__name">
       <h2 class="job__word">
-          ${title}
+          ${nameProject}
       </h2>
       <p class="job__description">
-          ${desc}
+          ${descriptionProject}
       </p>
       </div>
   `
@@ -37,4 +45,8 @@ function tmpAddProject( ) {
   blocksWrapper.appendChild(newElement);
 }
   
+function close( ) {
+  addProjectModal.classList.remove('open');
+}
+
 
