@@ -43,8 +43,16 @@ function addnewProject( ) {
   `
 
   blocksWrapper.appendChild(newElement);
+
+  clearInputFields ();
 }
   
+function clearInputFields() {
+    document.getElementById('name').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('link').value = '';
+}
+
 function close( ) {
   addProjectModal.classList.remove('open');
 }
