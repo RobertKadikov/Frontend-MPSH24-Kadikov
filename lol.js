@@ -59,74 +59,86 @@ function close( ) {
 
 
 
-// Получаем элементы из DOM
-const quotesList = document.querySelectorAll('.quotes__list-item');
-const generateButton = document.getElementById('generateButton');
-const authorSelect = document.getElementById('authorSelect');
+document.addEventListener("DOMContentLoaded", function() {
+    const quotesList = document.querySelector(".quotes__list");
+    const authorsDropdown = document.querySelector("#authors-dropdown");
+    const randomQuotesButton = document.querySelector("#random-quotes-button");
+    let authorsSet = new Set();
+    let cachedQuotes = []; // Массив для сохранения загруженных цитат
 
-
-// Функция для получения случайных цитат
-async function fetchRandomQuotes() {
-    try {
-        const response = await fetch('https://programming-quotesapi.vercel.app/api/bulk');
-        const quotes = await response.json();
-
-
-        // Собираем уникальных авторов
-        const authors = new Set();
-        quotes.forEach(quote => {
-            authors.add(quote.author);
-        });
-
-        
-         // Обновляем выпадающий список авторов
-         authorSelect.innerHTML = '<option value="">Выберите автора</option>'; // Сбрасываем список
-         authors.forEach(author => {
-             const option = document.createElement('option');
-             option.value = author;
-             option.textContent = author;
-             authorSelect.appendChild(option);
-         });
-        
-        // Обновляем список цитат на странице
-        quotes.forEach((quote, index) => {
-            if (index < quotesList.length) {
-                quotesList[index].textContent = `"${quote.quote}" — ${quote.author}`;
+    // Функция для загрузки 10 цитат одним запросом
+    async function fetchBulkQuotes() {
+        try {
+            const response = await fetch("https://programming-quotesapi.vercel.app/api/bulk");
+            if (!response.ok) {
+                throw new Error("Ошибка при загрузке цитат");
             }
-        });
-    } catch (error) {
-        console.error('Ошибка при получении цитат:', error);
+            const quotes = await response.json();
+            return quotes;
+        } catch (error) {
+            console.error("Ошибка при загрузке цитат:", error);
+            return [];
+        }
     }
-}
 
-// Функция для получения цитат по выбранному автору
-async function fetchQuotesByAuthor(author) {
-  try {
+    // Функция для загрузки и отображения 10 случайных цитат
+    async function loadRandomQuotes() {
+        quotesList.innerHTML = ""; // Очищаем список цитат
+        authorsSet.clear();
+        authorsDropdown.innerHTML = ""; // Очищаем список авторов
+        cachedQuotes = []; // Сбрасываем кэшированные цитаты
 
-      const response = await fetch("https://programming-quotes-api.vercel.app/quotes/author/${encodeURIComponent(author)}");
-      const quotes = await response.json();
+        const quotes = await fetchBulkQuotes();
+        cachedQuotes = quotes; // Сохраняем цитаты в кэш
 
-      // Обновляем список цитат на странице
-      quotes.forEach((quote, index) => {
-          if (index < quotesList.length) {
-              quotesList[index].textContent = `"${quote.quote}" — ${quote.author}`;
-          }
-      });
-  } catch (error) {
-      console.error('Ошибка при получении цитат:', error);
-  }
-}
+        quotes.forEach(quote => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("quotes__list-item");
+            listItem.textContent = `"${quote.quote}" — ${quote.author}`;
+            quotesList.appendChild(listItem);
 
-// Добавляем обработчик события на кнопку
-generateButton.addEventListener('click', () => {
-  const selectedAuthor = authorSelect.value;
-  if (selectedAuthor) {
-      fetchQuotesByAuthor(selectedAuthor);
-  } else {
-      fetchRandomQuotes();
-  }
+            // Сохраняем автора
+            authorsSet.add(quote.author);
+        });
+
+        // Обновляем выпадающий список авторов
+        authorsSet.forEach(author => {
+            const option = document.createElement("option");
+            option.value = author;
+            option.textContent = author;
+            authorsDropdown.appendChild(option);
+        });
+    }
+
+    // Функция для загрузки и отображения цитат определённого автора
+    function loadQuotesByAuthor(author) {
+        quotesList.innerHTML = ""; // Очищаем список цитат
+        let authorQuotes = cachedQuotes.filter(quote => quote.author === author);
+
+        if (authorQuotes.length === 0) {
+            console.warn("Нет цитат для выбранного автора в кэше.");
+            return;
+        }
+
+        authorQuotes.forEach(quote => {
+            const listItem = document.createElement("li");
+            listItem.classList.add("quotes__list-item");
+            listItem.textContent = `"${quote.quote}" — ${quote.author}`;
+            quotesList.appendChild(listItem);
+        });
+    }
+
+    // Обработчик выбора автора из выпадающего списка
+    authorsDropdown.addEventListener("change", function() {
+        const selectedAuthor = authorsDropdown.value;
+        if (selectedAuthor) {
+            loadQuotesByAuthor(selectedAuthor);
+        }
+    });
+
+    // Обработчик кнопки случайные цитаты
+    randomQuotesButton.addEventListener("click", loadRandomQuotes);
+
+    // Загрузка случайных цитат при загрузке страницы
+    loadRandomQuotes();
 });
-
-// Загружаем случайные цитаты при загрузке страницы
-fetchRandomQuotes();
-

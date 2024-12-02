@@ -29,7 +29,7 @@
     background-color: #e8f4fc;
   }
 
-  #generateButton {
+  #random-quotes-button {
     background-color: #4CAF50; /* Зеленый фон */
     border: none; /* Убираем границы */
     color: white; /* Текст белого цвета */
@@ -44,6 +44,6 @@
     transition: background-color 0.3s; /* Анимация изменения цвета фона */
   }
 
-  #generateButton:hover {
+  #random-quotes-button:hover {
     background-color: #45a049; /* Темнее цвет при наведении */
   }
