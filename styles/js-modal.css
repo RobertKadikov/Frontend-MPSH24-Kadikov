@@ -70,3 +70,47 @@
   .modal__close:hover svg rect {
     fill: #f4f4f4;
   }
+
+  #newProject {
+    background-color: #007bff; 
+    color: white; 
+    padding: 10px 20px; 
+    border: none; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    cursor: pointer; 
+  }
+
+  #newProject:hover {
+    background-color: #0056b3; 
+}
+
+#name {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    transition: border-color 0.3s; 
+}
+
+#description {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    transition: border-color 0.3s; 
+}
+
+#link {
+    width: 100%; 
+    padding: 10px; 
+    margin-bottom: 15px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+    font-size: 16px; 
+    transition: border-color 0.3s; 
+}
